@@ -26,7 +26,7 @@ public class Recipe {
     private Notes notes;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipe")
-    Set<Ingredient> ingredients;
+    private Set<Ingredient> ingredients;
 
     public Long getId() {
         return id;
