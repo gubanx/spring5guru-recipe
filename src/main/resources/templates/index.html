@@ -5,7 +5,16 @@
     <title>Index</title>
 </head>
 <body>
-<h1>Super receta!!!</h1>
-<p>Se actualiza él solico, qué pasote</p>
+<h1>Lista de recetas</h1>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Título</th>
+    </tr>
+    <tr th:each="recipe:${recipes}">
+        <td th:text="${recipe.id}"></td>
+        <td th:text="${recipe.description}"></td>
+    </tr>
+</table>
 </body>
 </html>
