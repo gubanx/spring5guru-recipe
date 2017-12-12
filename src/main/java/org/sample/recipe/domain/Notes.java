@@ -15,8 +15,7 @@ public class Notes {
     @Lob
     private String recipeNotes;
 
-    public Notes(Recipe recipe, String recipeNotes) {
-        this.recipe = recipe;
+    public Notes(String recipeNotes) {
         this.recipeNotes = recipeNotes;
     }
 
