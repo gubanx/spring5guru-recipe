@@ -2,6 +2,7 @@ package org.sample.recipe.bootstrap;
 
 import org.sample.recipe.domain.Difficulty;
 import org.sample.recipe.domain.Ingredient;
+import org.sample.recipe.domain.Notes;
 import org.sample.recipe.domain.Recipe;
 import org.sample.recipe.repository.CategoryRepository;
 import org.sample.recipe.repository.RecipeRepository;
@@ -37,6 +38,7 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamole.setCookTime(15);
         guacamole.setServings(4);
         guacamole.setDifficulty(Difficulty.EASY);
+        guacamole.setNotes(new Notes(guacamole, "Esto es una nota de la receta de guacamole"));
 
         Ingredient ingredient1 = new Ingredient();
         ingredient1.setDescription("Avocados");
