@@ -38,20 +38,18 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamole.setCookTime(15);
         guacamole.setServings(4);
         guacamole.setDifficulty(Difficulty.EASY);
-        guacamole.setNotes(new Notes(guacamole, "Esto es una nota de la receta de guacamole"));
+        guacamole.setNotes(new Notes("Esto es una nota de la receta de guacamole"));
 
         Ingredient ingredient1 = new Ingredient();
         ingredient1.setDescription("Avocados");
         ingredient1.setAmount(BigDecimal.valueOf(2));
         unitOfMeasureRepository.findByDescription("Pinch").ifPresent(ingredient1::setUom);
-        ingredient1.setRecipe(guacamole);
-        guacamole.getIngredients().add(ingredient1);
+        guacamole.addIngredient(ingredient1);
         Ingredient ingredient2 = new Ingredient();
         ingredient2.setDescription("Cilantro");
         ingredient2.setAmount(BigDecimal.valueOf(1));
         unitOfMeasureRepository.findByDescription("Tablespoon").ifPresent(ingredient2::setUom);
-        ingredient2.setRecipe(guacamole);
-        guacamole.getIngredients().add(ingredient2);
+        guacamole.addIngredient(ingredient2);
 
         categoryRepository.findByDescription("Mexican").ifPresent(guacamole.getCategories()::add);
         categoryRepository.findByDescription("Tex Mex").ifPresent(guacamole.getCategories()::add);
