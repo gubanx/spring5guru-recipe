@@ -2,6 +2,7 @@ package org.sample.recipe.controller;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.sample.recipe.domain.Recipe;
@@ -12,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.ArgumentMatchers.anyList;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.*;
 
@@ -35,13 +35,19 @@ public class IndexControllerTest {
 
     @Test
     public void index() {
-        Recipe recipe = new Recipe();
         List<Recipe> recipesData = new ArrayList<>();
-        recipesData.add(recipe);
+        recipesData.add(new Recipe());
+        recipesData.add(new Recipe());
+        recipesData.add(new Recipe());
         when(recipeService.getAllRecipes()).thenReturn(recipesData);
 
         assertEquals("index", indexController.index(model));
         verify(recipeService, times(1)).getAllRecipes();
-        verify(model, times(1)).addAttribute(eq("recipes"), anyList());
+
+        ArgumentCaptor<List<Recipe>> argumentCaptor = ArgumentCaptor.forClass(List.class);
+        verify(model, times(1)).addAttribute(eq("recipes"), argumentCaptor.capture());
+
+        List<Recipe> listInController = argumentCaptor.getValue();
+        assertEquals(3, listInController.size());
     }
 }
