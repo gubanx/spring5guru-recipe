@@ -43,6 +43,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         guacamole.setCookTime(15);
         guacamole.setServings(4);
         guacamole.setDifficulty(Difficulty.EASY);
+        guacamole.setSource("A wonderful source");
+        guacamole.setUrl("http://mi-url.com");
         guacamole.setNotes(new Notes("Esto es una nota de la receta de guacamole"));
 
         Ingredient ingredient1 = new Ingredient();
