@@ -29,13 +29,15 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Título</th>
-                                <th>View</th>
+                                <th>Ver</th>
+                                <th>Modificar</th>
                             </tr>
                             </thead>
                             <tr th:each="recipe:${recipes}">
                                 <td th:text="${recipe.id}">id</td>
                                 <td th:text="${recipe.description}">description</td>
                                 <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/show'}">Ver</a></td>
+                                <td><a href="#" th:href="@{'/recipe/'+${recipe.id}+'/update'}">Modificar</a></td>
                             </tr>
                         </table>
                     </div>
